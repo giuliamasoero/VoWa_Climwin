@@ -1,0 +1,6 @@
+column_name,description
+year,year of weather recording
+date,date of weather recording
+t_daily_mean,"daily mean ambient temperatures (°C) averaged using data from five stations obtained from Swiss meteorological stations surrounding Biel and Solothurn (Bern-Zollikofen, Cressier, Grenchen, Koppigen, Wynau)."
+rain_daily,"daily total rainfal (degrees Celsius) averaged using data from five stations obtained from Swiss meteorological stations surrounding Biel and Solothurn (Bern-Zollikofen, Cressier, Grenchen, Koppigen, Wynau)."
+wind_daily_mean,"daily mean wind (m/s) averaged using data from five stations obtained from Swiss meteorological stations surrounding Biel and Solothurn (Bern-Zollikofen, Cressier, Grenchen, Koppigen, Wynau)."

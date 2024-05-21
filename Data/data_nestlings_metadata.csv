@@ -1,0 +1,10 @@
+column_name,description
+year,year of measurement recording
+colony,colony where the nest was located
+nestcode_rearing,"code of the nest, equivalent to broodID"
+ring,individual ID of the nestling
+date_hatch,date of hatching of the first nestling in the brood
+mass_50,mass at day 50
+wing_50,wing length at day 50
+sternum_50,sternum length at day 50
+brood_size,brood size (number of hatchlings) of the nest of the focal nestling
