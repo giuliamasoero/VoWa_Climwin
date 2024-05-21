@@ -186,10 +186,11 @@ To estimate the weather conditions during nestling development, we used meteorol
 
 ## Preparing the variables
 
+Dates should have be formatted as a Date variable to allow climwin to read them correctly.
+
 ```r
 # year of measurement as factor
 data_nestlings$year_f <- as.factor(data_nestlings$year)
-data_nestlings$ring <- as.factor(data_nestlings$ring)
 
 # Date variables as dates
 data_nestlings$date_hatch <- as.Date(data_nestlings$date_hatch, "%d/%m/%y")
@@ -210,19 +211,17 @@ data_nestlings$hatch_doy_sc <- scale(data_nestlings$hatch_doy)[, 1]
 
 # Climwin analyses
 
- 
-
 The overall approach for the climwin analysis is to compare the support by the data for competing hypotheses and to formalize them into regression models (van de Pol et al., 2016). 
 
 Competing models are based upon a baseline model (called also null model, a model without weather effects) and ranked using the deltaAICc, or the difference in terms of the Akaike Information Criterion values calculated for a small sample size between the candidate model and baseline model. 
 
 Climwin presents the models using the deltaAICc value relative to the baseline model (AICc of the candidate model - AICc of the baseline model). Therefore, a model that is more supported than the baseline model will have a negative deltaAICc value. On the same hand the model with the best support from the data, usually with lowest AICc, will be shown as the model with lowest deltaAICc in the climwin output. 
 
-The baseline model was a linear mixed model with the wing length of the nestlings at 50 days of age in relation to brood size, colony of hatching, hatching day, and exact age of measurement (range 45-55 days of age). The function slidingwin creates a candidate set of competing models testing windows of different lengths for the weather variable of interest, in this study the mean daily ambient temperature (°C).  
+The baseline model was a linear mixed model with the wing length of the nestlings at 50 days of age in relation to brood size and hatching day. The function slidingwin creates a candidate set of competing models testing windows of different lengths for the weather variable of interest, in this study the mean daily ambient temperature (°C) and rainfall (mm).  
 
 For the analyses we used an individual specific time window, based on the date when the nestlings had 50 days. We then looked for windows between this reference date and 50 days before.
 
-Non-linear effects of temperature on the traits were taken into account by checking for both linear and quadratic trends. This is mentioned in the climwin output as func = lin (only linear term) func = quad (linear and quadratic terms).
+Non-linear effects of temperature on the traits were taken into account by checking for both linear and quadratic trends. This is mentioned in the climwin output as func = lin (only linear term) or func = quad (linear and quadratic terms).
 
 
 ## Base model
@@ -265,8 +264,11 @@ wing_50_sw1 <- slidingwin(
     temp_mean = data_weather$t_daily_mean
   ),
   stat = c("mean"),
+  # statistic to aggregate the weather variable within the window of interest
   func = c("lin", "quad"),
-  type = "relative", # the window is relative to the individual
+  # you can test several different functions
+  type = "relative",
+  # the window is relative to the individual
   range = c(50, 0),
   # 0 is the date given in bdate, 50 is the number of days before that date
   cinterval = "day",
@@ -280,7 +282,9 @@ wing_50_sw2 <- slidingwin(
     rain_sum = data_weather$rain_daily
   ),
   stat = c("sum"),
+  # statistic to aggregate the weather variable within the window of interest
   func = c("lin", "quad"),
+  # you can test several different functions
   type = "relative",
   # the window is relative to the individual
   range = c(50, 0),
