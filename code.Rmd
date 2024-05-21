@@ -22,17 +22,20 @@ editor_options:
 
 # The climwin approach
 
-![Figure 3: From Masoero et al. 2024](Figures/Chamois.png)
+From the R help file for the package, you can see if by typing ??climwin in the console.
 
-The overall approach for the climwin analysis is to compare the support by the data for competing hypotheses and to formalize them into regression models (van de Pol et al., 2016). 
+climwin is a package in R to help users detect a time period or ‘window’ over which a response variable (usually biological) is sensitive to the environment (usually climate/weather). Periods of climate sensitivity can help inform experimental design, improve species modelling or allow users to more effectively account for climate in statistical modelling. This vignette will give an introduction to the package and its basic features. The advanced vignette provides more detail on the ‘advanced’ features present within the package.
 
-Competing models are based upon a baseline model (called also null model, a model without weather effects) and ranked using the deltaAICc, or the difference in terms of the Akaike Information Criterion values calculated for a small sample size between the candidate model and baseline model. 
+__Why do we need climwin?__
 
-Climwin presents the models using the deltaAICc value relative to the baseline model (AICc of the candidate model - AICc of the baseline model). Therefore, a model that is more supported than the baseline model will have a negative deltaAICc value. On the same hand the model with the best support from the data, usually with lowest AICc, will be shown as the model with lowest deltaAICc in the climwin output. 
+The characteristics of an organism are likely to change within a year (e.g. body condition, behaviour), and these will influence the way in which an organism responds to its environment at different points in time. Therefore, when we are interested in studying the effects of climate on some biological response the time period or ‘window’ over which we choose to collect climate data can strongly influence the outcome and interpretation of our results. Yet there has been a tendency in ecological research to focus on a limited number of windows, often chosen arbitrarily. For example, there has been a strong focus on the biological impacts of average spring conditions.
 
-The baseline model was a linear mixed model with the wing length of the nestlings at 50 days of age in relation to brood size, colony of hatching, hatching day, and exact age of measurement (range 45-55 days of age). The function slidingwin creates a candidate set of competing models testing windows of different lengths for the weather variable of interest, in this study the mean daily ambient temperature (°C).  
- 
-Non-linear effects of temperature on the traits were taken into account by checking for both linear and quadratic trends. This is mentioned in the climwin output as func = lin (only linear term) func = quad (linear and quadratic terms).
+Without a critical comparison of different possible windows, we limit our ability to make meaningful conclusions from our research. If a biological trait displays no response to an arbitrarily chosen climate window it is difficult to determine if this is evidence of insensitivity to climate or whether the choice of time period is flawed. Even when we find a relationship between climate and the biological response, we cannot be sure that we have selected the period where the trait is most sensitive. Therefore, there is a need for a more effective method through which we can select our sampling period.
+
+Realistically, manually testing and comparing all possible windows can be difficult and time consuming. With climwin we hope to overcome this problem by employing exploratory approaches to test and compare the effects of all possible climate windows. This will remove the need to arbitrarily select climate windows, and will consequently improve our research outcomes and conclusions. Below we will outline the basic features of the climwin package, including how to carry out and interpret a climate window analysis.
+
+![Figure 3: Example from Masoero et al. 2024](Figures/Chamois.png)
+
 
 # Libraries and datasets
 
@@ -147,8 +150,20 @@ data_nestlings$hatch_doy_sc <- scale(data_nestlings$hatch_doy)[, 1]
 
 # Climwin analyses
 
-For the analyses we used an individual specific time window, based on the date when the nestlings had 50 days. We then looked for windows between this reference date and 50 days before.
  
+
+The overall approach for the climwin analysis is to compare the support by the data for competing hypotheses and to formalize them into regression models (van de Pol et al., 2016). 
+
+Competing models are based upon a baseline model (called also null model, a model without weather effects) and ranked using the deltaAICc, or the difference in terms of the Akaike Information Criterion values calculated for a small sample size between the candidate model and baseline model. 
+
+Climwin presents the models using the deltaAICc value relative to the baseline model (AICc of the candidate model - AICc of the baseline model). Therefore, a model that is more supported than the baseline model will have a negative deltaAICc value. On the same hand the model with the best support from the data, usually with lowest AICc, will be shown as the model with lowest deltaAICc in the climwin output. 
+
+The baseline model was a linear mixed model with the wing length of the nestlings at 50 days of age in relation to brood size, colony of hatching, hatching day, and exact age of measurement (range 45-55 days of age). The function slidingwin creates a candidate set of competing models testing windows of different lengths for the weather variable of interest, in this study the mean daily ambient temperature (°C).  
+
+For the analyses we used an individual specific time window, based on the date when the nestlings had 50 days. We then looked for windows between this reference date and 50 days before.
+
+Non-linear effects of temperature on the traits were taken into account by checking for both linear and quadratic trends. This is mentioned in the climwin output as func = lin (only linear term) func = quad (linear and quadratic terms).
+
 
 ## Base model
 
