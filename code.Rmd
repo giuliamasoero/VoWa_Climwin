@@ -36,6 +36,8 @@ Without a critical comparison of different possible windows, we limit our abilit
 
 Realistically, manually testing and comparing all possible windows can be difficult and time consuming. With climwin we hope to overcome this problem by employing exploratory approaches to test and compare the effects of all possible climate windows. This will remove the need to arbitrarily select climate windows, and will consequently improve our research outcomes and conclusions. Below we will outline the basic features of the climwin package, including how to carry out and interpret a climate window analysis.
 
+For example, Alpine chamois have been showing a marked body mass decrease. In this paper we used 27 years of data on body mass of 1.5-year-old chamois to identify over which window the body mass was most likely affected by weather. We investigated windows of different length between the time of body mass measurement and ca. 2 years before.
+
 ![Figure 3: Example from Masoero et al. 2024](Figures/Chamois.png)
 
 

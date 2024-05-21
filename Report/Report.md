@@ -1,7 +1,9 @@
 ---
 title: "Weather-sensitive developmental windows for nestling Alpine swifts"
 subtitle: "Supporting Information and codes for the manuscript"
-
+author: 
+          - name: Giulia Masoero
+            affiliation: Swiss Ornithological Institute, CH-6204 Sempach, Switzerland
 date: "Last compiled on 21 May 2024"
 output:
   html_document:
@@ -33,6 +35,8 @@ The characteristics of an organism are likely to change within a year (e.g. body
 Without a critical comparison of different possible windows, we limit our ability to make meaningful conclusions from our research. If a biological trait displays no response to an arbitrarily chosen climate window it is difficult to determine if this is evidence of insensitivity to climate or whether the choice of time period is flawed. Even when we find a relationship between climate and the biological response, we cannot be sure that we have selected the period where the trait is most sensitive. Therefore, there is a need for a more effective method through which we can select our sampling period.
 
 Realistically, manually testing and comparing all possible windows can be difficult and time consuming. With climwin we hope to overcome this problem by employing exploratory approaches to test and compare the effects of all possible climate windows. This will remove the need to arbitrarily select climate windows, and will consequently improve our research outcomes and conclusions. Below we will outline the basic features of the climwin package, including how to carry out and interpret a climate window analysis.
+
+For example, Alpine chamois have been showing a marked body mass decrease. In this paper we used 27 years of data on body mass of 1.5-year-old chamois to identify over which window the body mass was most likely affected by weather. We investigated windows of different length between the time of body mass measurement and ca. 2 years before.
 
 ![Figure 3: Example from Masoero et al. 2024](Figures/Chamois.png)
 
