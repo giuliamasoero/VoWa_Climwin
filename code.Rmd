@@ -1,7 +1,9 @@
 ---
 title: "Weather-sensitive developmental windows for nestling Alpine swifts"
 subtitle: "Supporting Information and codes for the manuscript"
-
+author: 
+          - name: Giulia Masoero
+            affiliation: Swiss Ornithological Institute, CH-6204 Sempach, Switzerland
 date: "Last compiled on `r format(Sys.time(), '%d %B %Y')`"
 output:
   html_document:
